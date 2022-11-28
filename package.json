@@ -13,6 +13,7 @@
   "license": "CC BY-SA 4.0",
   "author": "Open Terms Archive",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "node ./scripts/publish.js"
   }
 }
