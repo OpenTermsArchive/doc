@@ -120,8 +120,8 @@ When set to <code>true</code>, this boolean property loads the page in a headles
 </span></span><span class=line><span class=cl>  <span class=err>…</span>
 </span></span></code></pre></div><h4 id=terms-with-multiple-source-documents>Terms with multiple source documents</h4><p>When the terms are spread across multiple source documents, they should be declared by declaring their combination:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl>  <span class=err>…</span>
 </span></span><span class=line><span class=cl>  <span class=s2>&#34;documents&#34;</span><span class=err>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&#34;&lt;terms type&gt;&#34;</span><span class=p>:</span> 
-</span></span><span class=line><span class=cl>      <span class=s2>&#34;combine&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;&lt;terms type&gt;&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;combine&#34;</span><span class=p>:</span> <span class=p>[</span>
 </span></span><span class=line><span class=cl>        <span class=p>{</span>
 </span></span><span class=line><span class=cl>          <span class=nt>&#34;fetch&#34;</span><span class=p>:</span> <span class=s2>&#34;…&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>          <span class=nt>&#34;executeClientScripts&#34;</span><span class=p>:</span> <span class=s2>&#34;…&#34;</span><span class=p>,</span>
@@ -137,6 +137,7 @@ When set to <code>true</code>, this boolean property loads the page in a headles
 </span></span><span class=line><span class=cl>          <span class=nt>&#34;select&#34;</span><span class=p>:</span> <span class=s2>&#34;…&#34;</span>
 </span></span><span class=line><span class=cl>        <span class=p>}</span>
 </span></span><span class=line><span class=cl>      <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>  <span class=p>}</span>
 </span></span><span class=line><span class=cl>  <span class=err>…</span>
 </span></span></code></pre></div><p>If some parts of the source documents are repeated, they can be factorised. For example, it is common for the structure of HTML pages to be similar from page to page, so <code>select</code>, <code>remove</code> and <code>filter</code> would be the same. These elements can be shared instead of being duplicated:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl>  <span class=err>…</span>
