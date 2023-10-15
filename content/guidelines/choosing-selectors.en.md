@@ -4,37 +4,33 @@ title: "Choosing selectors"
 
 # Choosing selectors
 
-Selectors are an important part of the Open Terms Archive mechanism to target the meaningful parts of terms that should be stored, those that affect users rights and duties. And they can eventually be used to remove parts we don't want recorded, such as headers, footer and navigation.
+Selectors are a vital component of the Open Terms Archive mechanism, serving as precise pointers to the significant sections of terms within web documents. These selectors are based on the [W3C standard](https://www.w3.org/TR/selectors-3/). For a deeper dive into how they function, the Mozilla [learning document](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors) is a valuable resource. As web designs and structures evolve, there's a challenge to maintain the relevancy of selectors. This guide aims to outline best practices and considerations when choosing selectors. The selection process retains a degree of subjectivity and is highly contextual.
 
-These are CSS Selectors, based on [W3C standard](https://www.w3.org/TR/selectors-3/). If you want to learn how to use them, you will find a very wide range of online resources, but definitly that the Mozilla [learning document](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors) could be a good starting point (or reminder).
+## The Challenges of Evolving Web Designs
 
-## What's at stake?
+Design changes in web pages can alter their Document Object Model (DOM). These shifts may render previously defined selectors ineffective, requiring adjustments.
 
-The design of terms web pages evolves over time, leads to changes in the [DOM](https://en.wikipedia.org/wiki/Document_Object_Model) which may render ineffective the selectors you choose. That means they may no longer target the desired parts, what we want to avoid in order to continue recording terms changes. When this happens, you will need to redefine a new selector which targets the meaningful parts of the terms, that takes energy and time.
+## Best Practices for Selector Stability
 
-It is possible to reduce the frequency of human intervention on the selectors by choosing those that are the most capable of continuing to target the desired part of the document whatever changes occur on the page.
+**Simplicity is Key:** Opt for the simplest possible selectors. For instance, `#pageContent` or `[role="main"]`. Evaluate the weight of their [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to ensure stability.
 
-Let's take a closer look. **But bear in mind that there's no one right way to do this, it remains intrinsically subjective and page contextual.**
+**Descriptive Naming:** Selectors like `.tos` or `#legal-notice` are preferred due to their self-explanatory nature. Even if the page design changes, these selectors are more likely to remain relevant.
 
-## How to choose stable selectors ?
+**Minimize Redundancies:** Reduce the need for frequent updates by choosing robust selectors that remain relevant despite web design changes.
 
-If it is possible, choose selectors:
+**Broad Selection Strategy:** Begin by selecting a broader section and refine by removing non-essential parts to ensure no critical content is missed.
 
-- which are the simplest possible, for exemple `#pageContent` or `[role="main"]`. You could find helpful to determine the weight of their [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity), for exemple `#article` (with 1-0-0 specificity) is better than `.bodyClass .sectionClass .parentClass [id="article"]` (with 0-4-0 specificity)
-- whose their names indicate directly what they are targeting, for exemple `.tos` or `#legal-notice` because we can hypothesise that whatever changes are made to the design of the page this type of selector increases the chances to continue to target to the desired content
+**Use Range Selectors:** Leverage [range selectors](https://docs.opentermsarchive.org/contributing-terms/#range-selectors) for content spanning multiple sections.
 
-You should also keep in mind that:
+**Avoid Alphanumeric Sequences:** Arbitrary alphanumeric sequences like `.dez68h` can be problematic as they often represent automatically generated or temporary class names, which can change frequently.
 
-- making a wide selection and then remove the non-significant parts within this selection is an interesting way to avoid missing out some content
-- using [range selectors](https://docs.opentermsarchive.org/contributing-terms/#range-selectors) enable to not be constrained by the CSS box model and select content that starts in one box and ends in another box that are not in the same tree.
+**Limit Deep Nesting:** Deeply nested selectors like `main > div > #article > .tos` are fragile. Changes to the structure of the DOM can break such specific pathways, causing the selector to fail.
 
-Avoid, as much as possible:
+**Bypass Pseudo-Classes:** CSS pseudo-classes, like `.tos > div:nth-child(2)`, introduce a dependency on the order or position of elements. Structural changes can easily invalidate these selectors.
 
-- class names being or containing series of alphanumeric characters, for exemple `.dez68h` or `.toss-cpoxw7`
-- deep nesting of elements, for exemple `main > div > #article > .tos`
-- use of CSS pseudo-class, for exemple `.tos > div:nth-child(2)`
+## Examples
 
-### Exemple 1
+### Example 1
 
 For the following HTML code
 
@@ -79,7 +75,7 @@ or
 "select": "#tos_content > div > p"
 ```
 
-### Exemple 2
+### Example 2
 
 For the following HTML code
 
@@ -124,4 +120,25 @@ For the following HTML code
 
 ```json
 "select": ".container:first-child > div",
+```
+### Example 3
+
+For the HTML code:
+
+```html
+<div class="content dez68h">
+    <p>Terms of Service content here.</p>
+</div>
+```
+
+✅ A stable selector might be:
+
+```json
+"select": ".content > p"
+```
+
+❌ An unstable selector:
+
+```json
+"select": ".dez68h"
 ```
