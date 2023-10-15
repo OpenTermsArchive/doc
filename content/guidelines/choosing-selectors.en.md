@@ -10,23 +10,35 @@ Selectors are a vital component of the Open Terms Archive mechanism, serving as 
 
 Design changes in web pages can alter their Document Object Model (DOM). These shifts may render previously defined selectors ineffective, requiring adjustments.
 
-## Best Practices for Selector Stability
+## Best Practices for Selector Durability
 
-**Simplicity is Key:** Opt for the simplest possible selectors. For instance, `#pageContent` or `[role="main"]`. Evaluate the weight of their [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to ensure stability.
+### Simplicity is Key
 
-**Descriptive Naming:** Selectors like `.tos` or `#legal-notice` are preferred due to their self-explanatory nature. Even if the page design changes, these selectors are more likely to remain relevant.
+Opt for the simplest possible selectors. For instance, `#pageContent` or `[role="main"]`. Evaluate the weight of their [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to ensure stability.
 
-**Minimize Redundancies:** Reduce the need for frequent updates by choosing robust selectors that remain relevant despite web design changes.
+### Descriptive Naming
 
-**Broad Selection Strategy:** Begin by selecting a broader section and refine by removing non-essential parts to ensure no critical content is missed.
+Selectors like `.tos` or `#legal-notice` are preferred due to their self-explanatory nature. Even if the page design changes, these selectors are more likely to remain relevant.
 
-**Use Range Selectors:** Leverage [range selectors](https://docs.opentermsarchive.org/contributing-terms/#range-selectors) for content spanning multiple sections.
+### Avoid Alphanumeric Sequences
 
-**Avoid Alphanumeric Sequences:** Arbitrary alphanumeric sequences like `.dez68h` can be problematic as they often represent automatically generated or temporary class names, which can change frequently.
+Arbitrary alphanumeric sequences like `.dez68h` can be problematic as they often represent automatically generated or temporary class names, which can change frequently.
 
-**Limit Deep Nesting:** Deeply nested selectors like `main > div > #article > .tos` are fragile. Changes to the structure of the DOM can break such specific pathways, causing the selector to fail.
+### Limit Deep Nesting
 
-**Bypass Pseudo-Classes:** CSS pseudo-classes, like `.tos > div:nth-child(2)`, introduce a dependency on the order or position of elements. Structural changes can easily invalidate these selectors.
+Deeply nested selectors like `main > div > #article > .tos` are fragile. Changes to the structure of the DOM can break such specific pathways, causing the selector to fail.
+
+### Avoid Pseudo-Classes
+
+CSS pseudo-classes, like `.tos > div:nth-child(2)`, introduce a dependency on the order or position of elements. Structural changes can easily invalidate these selectors.
+
+### Broad Selection Strategy
+
+Begin by selecting a broader section and refine by removing non-essential parts to ensure no critical content is missed.
+
+### Use Range Selectors
+
+If relevant, leverage [range selectors](https://docs.opentermsarchive.org/contributing-terms/#range-selectors) for content spanning multiple sections.
 
 ## Examples
 
@@ -48,7 +60,7 @@ For the following HTML code
 ...
 ```
 
-✅ Some stable selectors could be:
+✅ Some durable selectors could be:
 
 ```json
 "select": "[role="main"]"
@@ -63,7 +75,7 @@ or
 ]
 ```
 
-❌ And unstable selectors might look like:
+❌ And brittle selectors could be:
 
 ```json
 "select": "._3zdf8p"
@@ -91,7 +103,7 @@ For the following HTML code
     </div>
     <div>
       <h1>Terms and Conditions of Use </h1>
-      <p>Deserunt ea reprehenderit esse dolor adipisicing consectetur aliquip ex magna consequat. Labore eiusmod eiusmod irure enim veniam excepteur commodo laborum et deserunt amet incididunt. Duis id ipsum consequat nulla veniam Lorem elit.<p>
+      <p>Deserunt ea reprehenderit esse dolor adipisicing consectetur aliquip ex magna consequat.<p>
       <p>...</p>
       <div class="advertising">...</div>
     </div>
@@ -104,7 +116,7 @@ For the following HTML code
 ...
 ```
 
-✅ A stable selector could be:
+✅ A durable selector could be:
 
 ```json
 "select": [
@@ -116,29 +128,8 @@ For the following HTML code
 "remove": ".advertising",
 ```
 
-❌ And an unstable selector might look like:
+❌ A brittle selector could be:
 
 ```json
 "select": ".container:first-child > div",
-```
-### Example 3
-
-For the HTML code:
-
-```html
-<div class="content dez68h">
-    <p>Terms of Service content here.</p>
-</div>
-```
-
-✅ A stable selector might be:
-
-```json
-"select": ".content > p"
-```
-
-❌ An unstable selector:
-
-```json
-"select": ".dez68h"
 ```
