@@ -87,13 +87,12 @@ The server <code>&lt;port></code> and <code>&lt;basePath></code> are defined in 
 </span></span><span class=line><span class=cl>      <span class=s2>&#34;sendWarnings&#34;</span><span class=o>:</span> <span class=s2>&#34;Boolean. Set to true to also send email in case of warning&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>  <span class=p>},</span>
-</span></span><span class=line><span class=cl>  <span class=s2>&#34;tracker&#34;</span><span class=o>:</span> <span class=p>{</span> <span class=c1>// Tracking mechanism to create GitHub issues when terms content is inaccessible
+</span></span><span class=line><span class=cl>  <span class=s2>&#34;reporter&#34;</span><span class=o>:</span> <span class=p>{</span> <span class=c1>// Reporter mechanism to create GitHub issues when terms content is inaccessible
 </span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=s2>&#34;githubIssues&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>      <span class=s2>&#34;repository&#34;</span><span class=o>:</span> <span class=s2>&#34;GitHub repository where to create isssues&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=s2>&#34;label&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=s2>&#34;Label to attach to bot-created issues. This specific label will be created automatically in the target repository&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;color&#34;</span><span class=o>:</span> <span class=s2>&#34;The hexadecimal color code for the label, without the leading #&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;description&#34;</span><span class=o>:</span> <span class=s2>&#34;A short description of the label&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;repositories&#34;</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;declarations&#34;</span><span class=o>:</span> <span class=s2>&#34;GitHub repository where to create issues; expected format: &lt;owner&gt;/&lt;repository&gt;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;versions&#34;</span><span class=o>:</span> <span class=s2>&#34;GitHub repository of versions associated with the declarations; expected format: &lt;owner&gt;/&lt;repository&gt;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;snapshots&#34;</span><span class=o>:</span> <span class=s2>&#34;GitHub repository of snapshots associated with the declarations; expected format: &lt;owner&gt;/&lt;repository&gt;&#34;</span>
 </span></span><span class=line><span class=cl>      <span class=p>}</span>
 </span></span><span class=line><span class=cl>    <span class=p>}</span>
 </span></span><span class=line><span class=cl>  <span class=p>},</span>
