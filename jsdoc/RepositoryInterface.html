@@ -171,7 +171,7 @@ For performance reasons, use this method rather than counting the number of entr
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line77">line 77</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -393,7 +393,7 @@ For performance reasons, the content of the records will not be loaded by defaul
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line67">line 67</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line81">line 81</a>
     </li></ul></dd>
     
 
@@ -441,6 +441,271 @@ For performance reasons, the content of the records will not be loaded by defaul
     <dd>
         
 <span class="param-type">Promise.&lt;Array.&lt;<a href="Record.html">Record</a>>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findByDate"><span class="type-signature">(async) </span>findByDate<span class="signature">(serviceId, termsType, date, documentId<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="Record.html">Record</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Find the record that was valid on the given date and that matches the given service ID and terms type and optionally the document ID
+In case of snapshots, if the record is related to terms extracted from multiple source documents, the document ID is required to find the source snapshot
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Service ID of record to find</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>termsType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Terms type of record to find</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Datetime on which the record to find was valid</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>documentId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Document ID of record to find. Used to identify the source in terms extracted from multiple source documents. Not necessary for terms with a single source document</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that will be resolved with the found record or an empty object if none match the given criteria
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="Record.html">Record</a>></span>
 
 
     </dd>
@@ -559,7 +824,7 @@ For performance reasons, the content of the records will not be loaded by defaul
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line56">line 56</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -1014,7 +1279,7 @@ Override this method if the repository needs some asynchronous initialization co
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line86">line 86</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line100">line 100</a>
     </li></ul></dd>
     
 
@@ -1169,7 +1434,7 @@ Override this method if the repository needs some asynchronous initialization co
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line105">line 105</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
@@ -1279,7 +1544,7 @@ Override this method if the repository needs some asynchronous initialization co
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line95">line 95</a>
+        <a href="archivist_recorder_repositories_interface.js.html">archivist/recorder/repositories/interface.js</a>, <a href="archivist_recorder_repositories_interface.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -1512,7 +1777,7 @@ Override this method if the repository needs some asynchronous initialization co
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Dec 11 2023 08:46:29 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Dec 11 2023 13:53:23 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
