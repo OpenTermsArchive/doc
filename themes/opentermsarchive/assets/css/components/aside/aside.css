@@ -32,10 +32,16 @@
 }
 
 .aside_item-current{
-  background-color:var(--colorBlack200);
+  background-color: var(--colorPrimary);
+  
   & > a,
   & > span{
     font-weight:bold;
+  }
+
+  & > a,
+  & #TableOfContents a{
+    color: var(--colorWhite);
   }
 }
 
